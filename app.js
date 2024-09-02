@@ -7,8 +7,6 @@ import { Server } from "socket.io";
 import { createServer } from "http";
 import { v4 as uuid } from "uuid";
 import cors from "cors";
-
-
 import { v2 as cloudinary } from "cloudinary";
 import {
   CHAT_JOINED,
@@ -48,7 +46,6 @@ cloudinary.config({
 });
 
 const app = express();
-
 const server = createServer(app);
 const io = new Server(server, {
   cors: corsOptions,
@@ -59,7 +56,7 @@ app.set("io", io);
 // Using Middlewares Here
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/chat", chatRoute);
