@@ -36,9 +36,7 @@ const envMode = process.env.NODE_ENV.trim() || "PRODUCTION";
 const adminSecretKey = process.env.ADMIN_SECRET_KEY || "adsasdsdfsdfsdfd";
 const userSocketIDs = new Map();
 const onlineUsers = new Set();
-var cors = require('cors')
 
-app.use(cors())
 connectDB(mongoURI);
 
 cloudinary.config({
